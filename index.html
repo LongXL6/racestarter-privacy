@@ -56,7 +56,7 @@
 <body>
     <div class="container">
         <h1>Privacy Policy</h1>
-        <p class="subtitle">RaceStarter by LongXL &mdash; Last updated: March 22, 2026</p>
+        <p class="subtitle">RaceStarter by LongXL &mdash; Last updated: September 6, 2026</p>
 
         <h2>Overview</h2>
         <p>RaceStarter ("the App") is developed by LongXL. We are committed to protecting your privacy. This Privacy Policy explains how we handle information when you use our App.</p>
@@ -71,8 +71,25 @@
             <li>We do not use any third-party analytics or advertising SDKs</li>
         </ul>
 
+        <h2>Microphone &amp; Speech Recognition</h2>
+        <p>RaceStarter asks for microphone access for three <strong>optional</strong> features:</p>
+        <ul>
+            <li><strong>Reaction timing</strong> &mdash; hearing your motors spool up after the GO signal to measure your launch reaction (and to flag a jump start when they spool up early)</li>
+            <li><strong>Lap timing</strong> &mdash; hearing your drone pass the gate the phone is placed beside</li>
+            <li><strong>Hands-free voice start</strong> &mdash; recognizing a spoken start keyword</li>
+        </ul>
+        <p>Audio is analyzed live in memory as it arrives and is discarded immediately. RaceStarter never writes a recording to disk, never keeps an audio buffer after a run, and never transmits audio anywhere. The only mic-derived results that are ever saved are the two the reaction timer produces &mdash; a reaction time in milliseconds and a jump-start flag &mdash; which go into the local history described below. Lap times are held in memory for the current run only and are cleared when you start the next run or leave the lap timer; they are never written to storage. A recognized start keyword only fires the start; the recognized speech itself is never stored.</p>
+        <p>Hands-free voice start additionally uses Apple's Speech framework with on-device recognition required, so spoken audio is never sent to Apple's servers or to us. If your device or language does not support on-device recognition, the App tells you so and the feature stays off &mdash; it never silently falls back to server-based recognition.</p>
+        <p>All three features are off unless you turn them on, and the App works fully without granting microphone or speech-recognition access.</p>
+
         <h2>Local Storage</h2>
-        <p>The App stores your preferences (such as language selection and sound style) locally on your device using standard iOS mechanisms (UserDefaults). Custom audio files you import are stored locally in the App's sandboxed storage on your device. This data never leaves your device and is not accessible to us or any third party.</p>
+        <p>Everything RaceStarter saves stays inside the App's own sandbox on your device:</p>
+        <ul>
+            <li><strong>Preferences</strong> &mdash; language, sound style, countdown and random-delay settings, and the on/off state of features such as the reaction timer, voice coach, GO haptics, drill sets and session goals. Stored with standard iOS UserDefaults.</li>
+            <li><strong>Race history</strong> (optional, and you can turn it off or clear it at any time) &mdash; stored as a JSON file in the App's Application Support directory (Application Support/RaceStarter/history.json). Each entry records the start mode, the countdown length or random delay range, the sound style, a timestamp, and &mdash; when the reaction timer is on &mdash; the measured reaction time in milliseconds and a jump-start flag; a start fired inside a drill set also carries that set's identifier. Lap times are never part of an entry.</li>
+            <li><strong>Custom sounds</strong> &mdash; audio files you import are copied into the App's Documents directory.</li>
+        </ul>
+        <p>This data never leaves your device and is not accessible to us or any third party. As of version 2.0 the App no longer uses iCloud synchronization of any kind; exporting your history to CSV or JSON happens only when you tap Export and choose where the file goes.</p>
 
         <h2>Network Access</h2>
         <p>RaceStarter operates entirely offline. The App does not make any network requests and does not require an internet connection to function.</p>
